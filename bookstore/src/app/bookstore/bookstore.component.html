@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <label class="btn-primary" ngbButtonLabel>
+            <input type="checkbox" ngbButton [(ngModel)]="parameters.discount" (change)="update()"> Discount
+        </label>
+        <div class="col-2"></div>
+        <label class="btn-primary" ngbButtonLabel>
+            <input type="checkbox" ngbButton [(ngModel)]="parameters.bestseller" (change)="update()"> Bestseller
+        </label>
+        <div class="col-2"></div>
+        <button class="btn btn-light" (click)="OpenModal()"><img *ngIf="cart.length" style="width: 40px;" src="../../assets/images/shopping-cart.jpg" alt=""></button>
+        <p *ngIf="cart.length == 0"> The cart is empty</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6" *ngFor="let item of books.results">
+            <div class="row">
+                <div class="col-2">
+                    <img src="../../assets/images/books/{{item.picture}}" alt="" style="width: 100%;">
+                </div>
+                <div class="col-8">
+                    <h4>{{item.name}}</h4>
+                    <p style="font-size: small; height: 130px;">{{item.description}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">   
+
+                </div>
+                <div div class="col-8" style="overflow: hidden;">                   
+                    <p style="font-weight: bold; float: left;">{{item.price | currency:'USD'}}</p>                        
+                    <p style="font-weight: bold; float: right;">{{item.grade}}/5</p>
+                </div>      
+            </div>
+            <div class="row">
+                <div class="col-2">
+
+                </div>
+                <div class="col-8" style="overflow: hidden;">
+                    <img *ngIf="item.discount" src="../../assets/images/discount.png" style="width: 50px; float: left;" alt="">
+                    <button type="button" style="float: right;" class="btn btn-primary" (click)="AddToCart(item)">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p *ngFor="let item of cart">{{item.name}}</p>
+</div>
