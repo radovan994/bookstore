@@ -3,7 +3,7 @@ simple bookstore shopping cart, using a custom made server (server not made by m
 
 Install node_modules in both server and bookstore <br>
 
-Run server by npm install <br>
+Run server by npm start <br>
 
 Run bookstore by ng serve
 
